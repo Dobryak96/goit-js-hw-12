@@ -1,16 +1,12 @@
+/* Reset styles */
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  width: 100%;
-  height: 100vh;
-  font-family: Montserrat, sans-serif;
-  background-color: #e2e9c4;
+  background: rgb(100, 139, 236);
 }
-
-/* Reset styles */
 
 h1,
 h2,

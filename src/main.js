@@ -89,8 +89,6 @@ function scrollDown() {
     });
 }
 
-//!======================================================
-
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     userData = e.target.elements.request.value.trim();

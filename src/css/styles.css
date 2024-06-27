@@ -78,18 +78,20 @@
 }
 
 /* Rendering styles */
+
 .gallery {
+  margin-top: 108px;
+  margin-bottom: 36px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: 32px;
 }
 
 .gallery-item {
-  width: 360px;
-  height: 200px;
+position: relative;
+  max-width: 300px;
+  max-height: 200px;
   border: 1px solid #808080;
   transition: 500ms;
 }
@@ -106,10 +108,11 @@
   transition: 500ms;
 }
 
-.gallery-item:hover {
-  border-color: #4e75ff;
+.gallery-item:hover,
+.gallery-image:hover {
+  cursor: zoom-in;
+  border-color: rgb(252, 0, 0);
   box-shadow: 0px 8px 8px 2px rgba(16, 16, 97, 0.48);
-  transform: scale(1.04);
 }
 
 .gallery-text {
@@ -144,45 +147,100 @@
 }
 
 /* Insert Loader from cssloaders.github.io */
+
 .loader {
   width: 50px;
   height: 50px;
   display: none;
   margin: 0 auto;
   position: relative;
-  border-width: 3px 2px 3px 2px;
-  border-style: solid dotted solid dotted;
-  border-color: #de3500 rgba(151, 107, 93, 0.3) #4e75ff rgba(151, 107, 93, 0.3);
+  transform: rotateZ(45deg);
+  perspective: 1000px;
   border-radius: 50%;
-  box-sizing: border-box;
-  animation: 1s rotate linear infinite;
+  width: 48px;
+  height: 48px;
+  color: #fff;
 }
 
 .loader:before,
 .loader:after {
   content: '';
+  display: block;
+  position: absolute;
   top: 0;
   left: 0;
-  position: absolute;
-  border: 10px solid transparent;
-  border-bottom-color: #4e75ff;
-  transform: translate(-10px, 19px) rotate(-35deg);
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  transform: rotateX(70deg);
+  animation: 1s spin linear infinite;
 }
 
 .loader:after {
-  border-color: #de3500 #0000 #0000 #0000;
-  transform: translate(32px, 3px) rotate(-35deg);
+  color: #FF3D00;
+  transform: rotateY(70deg);
+  animation-delay: .4s;
 }
 
 @keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotateZ(0deg);
+  }
+
   100% {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) rotateZ(360deg);
+  }
+}
+
+@keyframes rotateccw {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes spin {
+
+  0%,
+  100% {
+    box-shadow: .2em 0px 0 0px currentcolor;
+  }
+
+  12% {
+    box-shadow: .2em .2em 0 0 currentcolor;
+  }
+
+  25% {
+    box-shadow: 0 .2em 0 0px currentcolor;
+  }
+
+  37% {
+    box-shadow: -.2em .2em 0 0 currentcolor;
+  }
+
+  50% {
+    box-shadow: -.2em 0 0 0 currentcolor;
+  }
+
+  62% {
+    box-shadow: -.2em -.2em 0 0 currentcolor;
+  }
+
+  75% {
+    box-shadow: 0px -.2em 0 0 currentcolor;
+  }
+
+  87% {
+    box-shadow: .2em -.2em 0 0 currentcolor;
   }
 }
 
 /* Tiny styles for iziToast */
+
 .iziToast-texts {
-  font-family: Montserrat, sans-serif;
   width: 322px;
   letter-spacing: 0.03em;
   line-height: 1.5;
